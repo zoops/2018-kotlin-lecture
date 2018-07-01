@@ -26,6 +26,19 @@ var kotlinLogo = """| //
                    .|//
                    .|/ \"""
 
+val isTrue1: Boolean = true && false
+val isTrue2: Boolean = true || false
+val isTrue3: Boolean = !true
+val charData='C'
+var charData2:Char ='C'
+var str0: String = "Hello"
+
+val lazyT01:String by lazy {
+    println("Hello lazyT01")
+    "abcdefg"
+}
+
+lateinit var lateT01:String
 
 class T01UnitTest {
     @Test
@@ -64,6 +77,8 @@ class T01UnitTest {
 
     infix fun Int.addex(v:Int) = this+v
 
+    fun neverReturn(msg:String):Nothing = throw RuntimeException(msg)
+
     @Test
     fun T01() {
         println("hello kotlin T01")
@@ -96,6 +111,10 @@ class T01UnitTest {
         println("\$abc")
 
         println(kotlinLogo.trimMargin("."))
+        println("$lazyT01")
+
+        lateT01 = "Hello lateT01"
+        println("$lateT01 ")
     }
 
     @Test
