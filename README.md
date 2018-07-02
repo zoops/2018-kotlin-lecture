@@ -17,7 +17,13 @@
       - 함수형 프로그래밍에 대해 이해 하고 있으면…
 6. 특강을 듣는 학생들은 매일 당일 강의 후에 "비교과 융합프로그램 결과보고서_공학교육혁신센터(학생용).hwp" 를 출력하여 작성해서 다음강의 때 앞 책상에 제출한다. 
    마지막 강의에 대한 결과보고서는 마지막 날 작성해 제출한다.
-7. 평가는 아래 항목을 종합한다. (실습은 최소로 반영한다.)
+7. 평가는 아래 항목을 종합한다. 
       - 출석
       - 결과보고서
-      - 실습 
+8. 참고자료 
+      - https://github.com/kkangseongyun/kkangs_kotlin
+      - https://github.com/taehwandev/Kotlin-Udemy-Sample
+      - https://github.com/Jpub/KotlinProgramming
+      - 공식 홈 : https://kotlinlang.org/ 
+      - 핵심만 골라 배우는 코틀린 프로그래밍 : http://www.yes24.com/24/goods/58783204
+      - 깡샘의 코틀린 프로그래밍 : - http://www.yes24.com/24/goods/59017138
