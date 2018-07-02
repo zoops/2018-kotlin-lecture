@@ -20,7 +20,7 @@ var str2 = "bbb"        // ok
 var str4: String? = null // ok
 var str5 = """abcd
                 .efg
-                .high""".trimMargin(".") //trimIndent()
+                .high""".trimMargin(".")
 
 var kotlinLogo = """| //
                    .|//
