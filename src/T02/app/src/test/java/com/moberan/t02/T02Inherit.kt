@@ -50,13 +50,18 @@ class T02Inherit {
     fun T02() {
         println("Start T02Inherit")
 
-        var ex = Example("zoops", 1)
+        var ex: Example = Example("zoops", 1)
         println("$ex")
         ex.funA()
 
+        var ex2:Parent = ex as Parent
+        ex2.funA()
+
+        /*
         var ch = Child()
         println("$ch : ${ch.propertyWithImplementation}")
         ch.foo()
+        */
 
     }
 }

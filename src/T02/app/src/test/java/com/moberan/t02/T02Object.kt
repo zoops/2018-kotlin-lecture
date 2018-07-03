@@ -40,12 +40,6 @@ data class Person3 private constructor(val name: String, val age: Int, var liten
 class T02Object {
     @Test
     fun T02() {
-        Person.name = "zoops"
-
-        println("name : ${Person.name}")
-
-        println("Person2.Shared.makePerson : ${Person2.Shared.makePerson("zoops", 43)}")
-
         var p3 = Person3.makePerson("zoops3", 43);
         println("Person3.makePerson : ${p3}")
         p3.doFire()

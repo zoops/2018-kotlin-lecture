@@ -82,14 +82,17 @@ class ExampleUnitTest {
     fun T02() {
         println("Start T02")
 
+        /*
         val mc = MyClass11()
         mc.print()
-
+        */
+        //*
         val mc12 = MyClass12()
         println("${mc12.count}")
         mc12.count = 111
         println("${mc12.count}")
+        //*/
 
-        println("${1.addex(2)}")
+        // println("${1.addex(2)}")
     }
 }
