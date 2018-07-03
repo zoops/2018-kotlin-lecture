@@ -2,6 +2,8 @@ package com.moberan.t03
 
 import org.junit.Test
 
+typealias mytype = (Int, Int)->Int
+
 class T03Lambda {
     @Test
     fun T03() {
@@ -19,6 +21,8 @@ class T03Lambda {
 
         val f4 = fun(x: Int, y: Int) = x + y
         println("익명 함수2 : ${f4(1,2)}, ${f4}")
+        val f4_1:mytype = fun(x, y) = x + y
+        println("익명 함수2 : ${f4_1(1,2)}, ${f4_1}")
 
         var l1 = { a:Int, b:Int -> println("l1");a+b }
         var l1_1 = { a:Int, b:Int -> a+b; println("l1_1") }
