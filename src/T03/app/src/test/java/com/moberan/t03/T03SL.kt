@@ -38,5 +38,11 @@ class T03SL {
         }
 
         println("$list")
+
+        var r = run{
+            println("Top level run")
+            User("s")
+        }
+        println(r)
     }
 }
