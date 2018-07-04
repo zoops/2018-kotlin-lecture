@@ -2,8 +2,6 @@ package com.moberan.t03
 
 import org.junit.Test
 
-fun addMaker(a:Int): (Int) -> Int { return { a + it } }
-
 
 class T03Currying {
     @Test
@@ -17,3 +15,6 @@ class T03Currying {
         println("a1(5) : ${a1(5)}")
     }
 }
+
+fun addMaker(a:Int): (Int) -> Int { return { a + it } }
+
