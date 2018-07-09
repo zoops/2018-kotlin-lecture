@@ -1,4 +1,4 @@
-package com.moberan.zoops.rndhub.mainFragment
+package com.moberan.zoops.rndhub.mainfragment
 
 import android.content.Context
 import android.os.Bundle
@@ -12,24 +12,23 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.moberan.zoops.rndhub.R
 import com.moberan.zoops.rndhub.api.ApiUtil
-import com.moberan.zoops.rndhub.mainFragment.adapter.MyIssueRecyclerViewAdapter
-import com.moberan.zoops.rndhub.model.Response.RnDInfoRes
-import com.moberan.zoops.rndhub.model.RnDInfoItem
-import kotlinx.android.synthetic.main.fragment_issue_list.*
+import com.moberan.zoops.rndhub.data.RnDInfo
+import com.moberan.zoops.rndhub.data.RnDInfoRes
+import com.moberan.zoops.rndhub.mainfragment.adapter.MyPeerRecyclerViewAdapter
+import kotlinx.android.synthetic.main.fragment_peer_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [IssueFragment.OnListFragmentInteractionListener] interface.
+ * [PeerFragment.OnListFragmentInteractionListener] interface.
  */
-class IssueFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class PeerFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private var mListener: OnListFragmentInteractionListener? = null
-    private var mRndInfos: MutableList<RnDInfoItem> = mutableListOf()
+    private var mDatas: MutableList<RnDInfo> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +39,7 @@ class IssueFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_issue_list, container, false)
+        return inflater.inflate(R.layout.fragment_peer_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +49,7 @@ class IssueFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         if (list is RecyclerView) {
             with(list) {
                 layoutManager = LinearLayoutManager(context)
-                adapter = MyIssueRecyclerViewAdapter(mRndInfos, mListener)
+                adapter = MyPeerRecyclerViewAdapter(mDatas, mListener)
             }
         }
         swipe_refresh_layout.setOnRefreshListener(this)
@@ -62,23 +61,24 @@ class IssueFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun requestData() {
-        ApiUtil.issueService!!.getRnDIssueList2().enqueue(object : Callback<RnDInfoRes> {
+        ApiUtil.mPeerService!!.getRnDPeerList().enqueue(object : Callback<RnDInfoRes> {
             override fun onResponse(call: Call<RnDInfoRes>, response: Response<RnDInfoRes>) {
                 try {
-                    mRndInfos.clear()
-                    response.body()?.list?.forEach { mRndInfos.add(it) }
+                    mDatas.clear()
+                    response.body()?.list?.forEach { mDatas.add(it) }
                     list.adapter?.notifyDataSetChanged()
 
-                    Toast.makeText(this@IssueFragment.context, "onResponse", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PeerFragment.context, "onResponse", Toast.LENGTH_SHORT).show()
                 } catch (ex: Exception) {
                 } finally { swipe_refresh_layout.setRefreshing(false) }
             }
+
             override fun onFailure(call: Call<RnDInfoRes>, t: Throwable) {
                 try {
-                    mRndInfos.clear()
+                    mDatas.clear()
                     list.adapter?.notifyDataSetChanged()
 
-                    Toast.makeText(this@IssueFragment.context, "onFailure", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PeerFragment.context, "onFailure", Toast.LENGTH_SHORT).show()
                 } catch (ex: Exception) {
                 } finally { swipe_refresh_layout.setRefreshing(false) }
             }
@@ -111,14 +111,13 @@ class IssueFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
      * for more information.
      */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: RnDInfoItem?)
+        fun onListFragmentInteraction(item: RnDInfo?)
     }
 
     companion object {
         @JvmStatic
         fun newInstance() =
-                IssueFragment().apply {
+                PeerFragment().apply {
                     arguments = Bundle().apply {
                     }
                 }

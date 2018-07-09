@@ -1,4 +1,4 @@
-package com.moberan.zoops.rndhub.mainFragment
+package com.moberan.zoops.rndhub.mainfragment
 
 import android.content.Context
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.moberan.zoops.rndhub.mainFragment.adapter.MyPeerRecyclerViewAdapter
 import com.moberan.zoops.rndhub.R
+import com.moberan.zoops.rndhub.mainfragment.adapter.MyPeerRecyclerViewAdapter
 
-import com.moberan.zoops.rndhub.mainFragment.dummy.DummyContent
-import com.moberan.zoops.rndhub.mainFragment.dummy.DummyContent.DummyItem
+import com.moberan.zoops.rndhub.mainfragment.dummy.DummyContent
+import com.moberan.zoops.rndhub.mainfragment.dummy.DummyContent.DummyItem
 
 /**
  * A fragment representing a list of Items.

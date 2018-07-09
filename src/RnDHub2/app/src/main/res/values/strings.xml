@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">RnDHub</string>
-    <string name="tab_1_Issue">이슈</string>
-    <string name="tab_2_Category">분야별</string>
-    <string name="tab_3_Peer">경쟁사</string>
+    <string name="tab_1_issue">잇슈</string>
+    <string name="tab_2_cat">분야별</string>
+    <string name="tab_3_peer">동종업계</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 </resources>

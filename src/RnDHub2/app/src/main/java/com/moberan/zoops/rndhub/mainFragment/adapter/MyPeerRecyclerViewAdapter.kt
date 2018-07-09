@@ -1,4 +1,4 @@
-package com.moberan.zoops.rndhub.mainFragment.adapter
+package com.moberan.zoops.rndhub.mainfragment.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.TextView
 import com.moberan.zoops.rndhub.R
 
 
-import com.moberan.zoops.rndhub.mainFragment.PeerFragment.OnListFragmentInteractionListener
-import com.moberan.zoops.rndhub.mainFragment.dummy.DummyContent.DummyItem
+import com.moberan.zoops.rndhub.mainfragment.PeerFragment.OnListFragmentInteractionListener
+import com.moberan.zoops.rndhub.mainfragment.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_peer.view.*
 

@@ -1,4 +1,4 @@
-package com.moberan.zoops.rndhub.mainFragment
+package com.moberan.zoops.rndhub.mainfragment
 
 import android.content.Context
 import android.os.Bundle
@@ -9,9 +9,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.moberan.zoops.rndhub.mainFragment.adapter.MyTrendRecyclerViewAdapter
-import com.moberan.zoops.rndhub.mainFragment.dummy.DummyContent
 import com.moberan.zoops.rndhub.R
+import com.moberan.zoops.rndhub.mainfragment.adapter.MyCategoryRecyclerViewAdapter
+
+import com.moberan.zoops.rndhub.mainfragment.dummy.DummyContent
+import com.moberan.zoops.rndhub.mainfragment.dummy.DummyContent.DummyItem
 
 /**
  * A fragment representing a list of Items.
@@ -35,7 +37,7 @@ class CategoryFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_trend_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_category_list, container, false)
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -44,7 +46,7 @@ class CategoryFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyTrendRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = MyCategoryRecyclerViewAdapter(DummyContent.ITEMS, listener)
             }
         }
         return view
@@ -77,7 +79,7 @@ class CategoryFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyContent.DummyItem?)
+        fun onListFragmentInteraction(item: DummyItem?)
     }
 
     companion object {

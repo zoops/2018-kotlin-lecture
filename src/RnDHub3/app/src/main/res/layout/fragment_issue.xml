@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.moberan.zoops.rndhub.data.RnDInfo"/>
+        <variable
+            name="listener"
+            type="com.moberan.zoops.rndhub.mainfragment.adapter.MyIssueRecyclerViewAdapter.ViewHolder"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="@dimen/item_elevation"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:onClick="@{(v) -> listener.onItemClick(v, item)}">
+        <TextView
+            android:id="@+id/item_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@{item.title}"/>
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@{item.cat}"/>
+    </LinearLayout>
+</layout>

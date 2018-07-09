@@ -9,19 +9,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-
 object ApiUtil {
-    private val BASE_URL = BuildConfig.API_SERVER_ADDR
     private val TIME_OUT = 30
-
-    private val ISSUE_URL = "app/issue/"
-    private var mIssueService: IssueService? = null
-
-    val issueService: IssueService?
+    val BASE_URL = BuildConfig.API_SERVER_ADDR
+    val TREND_URL = "app/issue/"
+    var mTendService: TrendService? = null
         get() {
-            if (mIssueService == null)
-                mIssueService = getRetrofit(BASE_URL + ISSUE_URL).create(IssueService::class.java)
-            return mIssueService
+            if (field == null) {
+                field  = getRetrofit(BASE_URL + TREND_URL).create(TrendService::class.java)
+            }
+            return field
         }
 
     private fun getRetrofit(baseUrl: String): Retrofit {
@@ -34,7 +31,7 @@ object ApiUtil {
                             } else {
                                 null
                             }
-                }).create()
+                        }).create()
 
         val client = OkHttpClient.Builder()
                 .readTimeout(TIME_OUT.toLong(), TimeUnit.SECONDS)

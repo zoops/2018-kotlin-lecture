@@ -10,15 +10,15 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.moberan.zoops.rndhub.mainFragment.CategoryFragment
-import com.moberan.zoops.rndhub.mainFragment.IssueFragment
-import com.moberan.zoops.rndhub.mainFragment.PeerFragment
-import com.moberan.zoops.rndhub.mainFragment.dummy.DummyContent
-import com.moberan.zoops.rndhub.model.RnDInfoItem
+import com.moberan.zoops.rndhub.data.RnDInfo
+import com.moberan.zoops.rndhub.mainfragment.CategoryFragment
+import com.moberan.zoops.rndhub.mainfragment.PeerFragment
+import com.moberan.zoops.rndhub.mainfragment.TrendFragment
+import com.moberan.zoops.rndhub.mainfragment.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), PeerFragment.OnListFragmentInteractionListener, CategoryFragment.OnListFragmentInteractionListener, IssueFragment.OnListFragmentInteractionListener {
-    override fun onListFragmentInteraction(item: RnDInfoItem?) {
+class MainActivity : AppCompatActivity(), TrendFragment.OnListFragmentInteractionListener, CategoryFragment.OnListFragmentInteractionListener, PeerFragment.OnListFragmentInteractionListener {
+    override fun onListFragmentInteraction(item: RnDInfo?) {
         Toast.makeText(this, "onListFragmentInteraction : $item", Toast.LENGTH_SHORT).show()
     }
 
@@ -51,10 +51,11 @@ class MainActivity : AppCompatActivity(), PeerFragment.OnListFragmentInteraction
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
-        fab.setOnClickListener {
-            Snackbar.make(it, "Replace with your own action", Snackbar.LENGTH_LONG)
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+
     }
 
 
@@ -88,7 +89,7 @@ class MainActivity : AppCompatActivity(), PeerFragment.OnListFragmentInteraction
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             return when(position) {
-                0 -> IssueFragment.newInstance()
+                0 -> TrendFragment.newInstance()
                 1 -> CategoryFragment.newInstance(1)
                 else -> PeerFragment.newInstance(1)
             }

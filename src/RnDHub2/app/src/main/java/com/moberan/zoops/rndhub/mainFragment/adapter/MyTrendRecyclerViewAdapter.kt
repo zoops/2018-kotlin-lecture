@@ -1,23 +1,23 @@
-package com.moberan.zoops.rndhub.mainFragment.adapter
-
+package com.moberan.zoops.rndhub.mainfragment.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.moberan.zoops.rndhub.mainFragment.CategoryFragment.OnListFragmentInteractionListener
-import com.moberan.zoops.rndhub.mainFragment.dummy.DummyContent.DummyItem
 import com.moberan.zoops.rndhub.R
+import com.moberan.zoops.rndhub.data.RnDInfo
+
+
+import com.moberan.zoops.rndhub.mainfragment.TrendFragment.OnListFragmentInteractionListener
+
 import kotlinx.android.synthetic.main.fragment_trend.view.*
 
 /**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
  * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
  */
 class MyTrendRecyclerViewAdapter(
-        private val mValues: List<DummyItem>,
+        private val mValues: List<RnDInfo>,
         private val mListener: OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<MyTrendRecyclerViewAdapter.ViewHolder>() {
 
@@ -25,7 +25,7 @@ class MyTrendRecyclerViewAdapter(
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
+            val item = v.tag as RnDInfo
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
             mListener?.onListFragmentInteraction(item)
@@ -40,8 +40,8 @@ class MyTrendRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        holder.mIdView.text = item.title
+        holder.mContentView.text = item.cat
 
         with(holder.mView) {
             tag = item
