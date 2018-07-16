@@ -33,13 +33,28 @@
                 android:layout_marginLeft="17dp"
                 android:layout_marginRight="17dp"
                 android:background="?android:attr/selectableItemBackground">
-                <ImageView
-                    android:layout_width="77dp"
-                    android:layout_height="77dp"
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="6dp"
-                    app:error="@{@drawable/cat_unknown}"
-                    app:imageUrl="@{item.catIconUrl}"/>
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center"
+                        app:error="@{@drawable/cat_unknown}"
+                        app:imageUrl="@{item.catIconUrl}"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textSize="10sp"
+                        android:textColor="#000000"
+                        android:singleLine="true"
+                        android:layout_gravity="center"
+                        android:text="@{item.cat}"/>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,7 +64,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="7dp"
-                        android:textSize="19sp"
+                        android:textSize="12sp"
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:text="@{item.title}"/>
@@ -57,11 +72,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="7dp"
-                        android:textSize="17sp"
+                        android:textSize="10sp"
                         android:textColor="#000000"
                         android:singleLine="true"
                         android:text="@{String.format(@string/researcher_format, item.researcherCnt)}"
                         tools:text="@string/researcher_format"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="7dp"
+                        android:textSize="10sp"
+                        android:textColor="#000000"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:text="@{String.format(@string/associcate_format, item.asocicateWord.toString())}"
+                        />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

@@ -6,4 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="researcher_format">연구자 : %03d명</string>
+    <string name="associcate_format">연관단어 : %s</string>
+
 </resources>
