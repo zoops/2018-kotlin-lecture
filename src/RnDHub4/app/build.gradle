@@ -75,4 +75,9 @@ dependencies {
 
     // databinding
     kapt "com.android.databinding:compiler:$android_plugin_version"
+
+    // Room
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.23.4'
+    implementation 'android.arch.persistence.room:runtime:1.0.0-rc1'
+    kapt 'android.arch.persistence.room:compiler:1.0.0-rc1'
 }

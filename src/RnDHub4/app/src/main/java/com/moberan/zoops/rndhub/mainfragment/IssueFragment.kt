@@ -11,10 +11,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.moberan.zoops.rndhub.R
 import com.moberan.zoops.rndhub.api.ApiUtil
+import com.moberan.zoops.rndhub.dao.RnDInfoRoom
 import com.moberan.zoops.rndhub.data.RnDInfo
 import com.moberan.zoops.rndhub.data.RnDInfoRes
 import com.moberan.zoops.rndhub.mainfragment.adapter.MyIssueRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_issue_list.*
+import kotlinx.coroutines.experimental.async
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -58,11 +60,33 @@ class IssueFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             override fun onResponse(call: Call<RnDInfoRes>, response: Response<RnDInfoRes>) {
                 try {
                     mDatas.clear()
-                    response.body()?.list?.forEach { mDatas.add(it) }
-                    list.adapter?.notifyDataSetChanged()
+
+                    // var dao = RnDInfoDao.newInstance(this@IssueFragment.context!!.applicationContext)
+                    var dao = RnDInfoRoom.getInstance().rndInfoRoomDao()
+
+                    async {
+                        response.body()?.list?.forEach {
+
+                            try {
+                                println("$it")
+
+                                mDatas.add(it)
+                                dao.insertRndInfo(it)
+                            }
+                            catch (ex: Exception) {
+                                ex.printStackTrace()
+                            }
+                        }
+
+                        list.post {
+                            println("IssueFragment : notifyDataSetChanged" )
+                            list.adapter?.notifyDataSetChanged()
+                        }
+                    }
 
                     Toast.makeText(this@IssueFragment.context, "onResponse", Toast.LENGTH_SHORT).show()
                 } catch (ex: Exception) {
+                    ex.printStackTrace()
                 } finally { swipe_refresh_layout.setRefreshing(false) }
             }
 

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.moberan.zoops.rndhub.dao.RnDInfoRoom
 import com.moberan.zoops.rndhub.data.RnDInfo
 import com.moberan.zoops.rndhub.mainfragment.CategoryFragment
 import com.moberan.zoops.rndhub.mainfragment.IssueFragment
@@ -36,6 +37,9 @@ class MainActivity : AppCompatActivity(), PeerFragment.OnListFragmentInteraction
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar)
+
+        RnDInfoRoom.getInstance(this.applicationContext)
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
